@@ -23,7 +23,9 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         folderAlow = "NotAllow"
         switchOutlet.isOn = false
-        loadData()
+        tableFolder.delegate = self
+        tableFolder.dataSource = self
+        
 //        let dirUrl = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first
 //         create folder
 //        do {
@@ -60,6 +62,7 @@ class ViewController: UIViewController {
 //            print("somthing wong ")
 //        }
         creatDir(dieName: enterName.text!)
+        tableFolder.reloadData()
         
     }
     
@@ -145,6 +148,7 @@ extension ViewController : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableFolder.dequeueReusableCell(withIdentifier: "myCell") as! tableViewCell
+        cell.nameFolder.text = "Ddddd"
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
